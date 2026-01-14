@@ -1,0 +1,103 @@
+.container {
+    width: 480px;
+    margin: 30px auto;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Tiêu đề */
+.title {
+    color: #1e40af;
+    text-align: center;
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #1e40af;
+    text-align: center;
+    margin: 15px 0 10px;
+    font-size: 18px;
+}
+
+/* Khu vực chọn ngày */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background-color: #f8fafc;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.controls span {
+    font-size: 14px;
+    color: #444;
+}
+
+.form-select {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-select:focus {
+    border-color: #2563eb;
+}
+
+/* Nút chuyển đổi */
+button {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #1e40af;
+}
+
+/* Kết quả */
+.result {
+    padding: 10px 15px 15px;
+}
+
+/* Bảng kết quả */
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+.result-table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.result-table td {
+    padding: 8px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+}
+
+.result-table td:first-child {
+    font-weight: bold;
+    width: 45%;
+    color: #374151;
+}
+
+.result-table td:nth-child(2) {
+    color: #92400e;
+}
