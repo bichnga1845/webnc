@@ -4,7 +4,7 @@ import { Ex10LunarYearComponent } from './lunar-year/lunar-year';
 
 const routes: Routes = [
   { path: '', redirectTo: 'lunar', pathMatch: 'full' },
-  { path: 'lunar', component: Ex10LunarYearComponent }
+  // { path: 'lunar', component: Ex10LunarYearComponent }
 ];
 
 @NgModule({
