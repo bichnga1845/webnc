@@ -1,0 +1,162 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white text-center">
+          <h3>Course Registration Form</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <!-- Student Name -->
+              <div class="col-md-6 mb-3">
+                <label for="studentName" class="form-label">Student Name: <span class="text-danger">*</span></label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="studentName" 
+                  formControlName="studentName"
+                  placeholder="Enter full name"
+                  [class.is-invalid]="isFieldInvalid('studentName')">
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('studentName')">
+                  <small *ngIf="registrationForm.get('studentName')?.errors?.['required']">Name is required</small>
+                  <small *ngIf="registrationForm.get('studentName')?.errors?.['minlength']">Name must be at least 3 characters</small>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="col-md-6 mb-3">
+                <label for="email" class="form-label">Email: <span class="text-danger">*</span></label>
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  id="email" 
+                  formControlName="email"
+                  placeholder="student@email.com"
+                  [class.is-invalid]="isFieldInvalid('email')">
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
+                  <small *ngIf="registrationForm.get('email')?.errors?.['required']">Email is required</small>
+                  <small *ngIf="registrationForm.get('email')?.errors?.['email']">Invalid email format</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Phone -->
+              <div class="col-md-6 mb-3">
+                <label for="phone" class="form-label">Phone Number: <span class="text-danger">*</span></label>
+                <input 
+                  type="tel" 
+                  class="form-control" 
+                  id="phone" 
+                  formControlName="phone"
+                  placeholder="0123456789"
+                  [class.is-invalid]="isFieldInvalid('phone')">
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('phone')">
+                  <small *ngIf="registrationForm.get('phone')?.errors?.['required']">Phone is required</small>
+                  <small *ngIf="registrationForm.get('phone')?.errors?.['pattern']">Phone must be 10 digits</small>
+                </div>
+              </div>
+
+              <!-- Gender -->
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Gender: <span class="text-danger">*</span></label>
+                <div>
+                  <div class="form-check form-check-inline">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      id="male" 
+                      formControlName="gender" 
+                      value="Male">
+                    <label class="form-check-label" for="male">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      id="female" 
+                      formControlName="gender" 
+                      value="Female">
+                    <label class="form-check-label" for="female">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      id="other" 
+                      formControlName="gender" 
+                      value="Other">
+                    <label class="form-check-label" for="other">Other</label>
+                  </div>
+                </div>
+                <small class="text-danger" *ngIf="isFieldInvalid('gender')">Please select gender</small>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Course -->
+              <div class="col-md-6 mb-3">
+                <label for="course" class="form-label">Select Course: <span class="text-danger">*</span></label>
+                <select 
+                  class="form-select" 
+                  id="course" 
+                  formControlName="course"
+                  [class.is-invalid]="isFieldInvalid('course')">
+                  <option value="">Choose a course...</option>
+                  <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('course')">
+                  Please select a course
+                </div>
+              </div>
+
+              <!-- Semester -->
+              <div class="col-md-6 mb-3">
+                <label for="semester" class="form-label">Semester: <span class="text-danger">*</span></label>
+                <select 
+                  class="form-select" 
+                  id="semester" 
+                  formControlName="semester"
+                  [class.is-invalid]="isFieldInvalid('semester')">
+                  <option value="">Choose semester...</option>
+                  <option *ngFor="let sem of semesters" [value]="sem">{{ sem }}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('semester')">
+                  Please select a semester
+                </div>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="mb-3">
+              <label for="address" class="form-label">Address: <span class="text-danger">*</span></label>
+              <textarea 
+                class="form-control" 
+                id="address" 
+                formControlName="address"
+                rows="3"
+                placeholder="Enter your address"
+                [class.is-invalid]="isFieldInvalid('address')"></textarea>
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('address')">
+                Address is required
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+              <button type="submit" class="btn btn-success px-4">Submit</button>
+              <button type="button" class="btn btn-secondary px-4" (click)="onReset()">Reset</button>
+            </div>
+          </form>
+
+          <!-- JSON Output -->
+          <div class="mt-4" *ngIf="jsonOutput">
+            <h5>Registration Data:</h5>
+            <pre class="bg-light p-3 border rounded text-danger">{{ jsonOutput }}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

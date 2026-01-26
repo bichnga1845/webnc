@@ -1,0 +1,15 @@
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  border-radius: 10px 10px 0 0 !important;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+input.ng-valid.ng-touched {
+  border-color: #28a745;
+}

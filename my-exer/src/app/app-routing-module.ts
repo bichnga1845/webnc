@@ -14,6 +14,8 @@ import { Ex18 } from './ex18/ex18';
 import { FakeProduct } from './fake-product/fake-product';
 import { FakeProductex27 } from './fake-productex27/fake-productex27';
 import { Ex28 } from './ex28/ex28';
+import { Ex21 } from './ex21/ex21';
+import { Ex22 } from './ex22/ex22';
 
 
 const routes: Routes = [
@@ -40,6 +42,11 @@ const routes: Routes = [
   //ex28
   {path:'ex28',component: Ex28},
 
+  //ex21 - Login Form
+  {path:'ex21',component: Ex21},
+
+  //ex22 - Course Registration
+  {path:'ex22',component: Ex22},
 
 
 

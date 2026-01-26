@@ -1,6 +1,7 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -20,6 +21,8 @@ import { Ex18 } from './ex18/ex18';
 import { FakeProduct } from './fake-product/fake-product';
 import { FakeProductex27 } from './fake-productex27/fake-productex27';
 import { Ex28 } from './ex28/ex28';
+import { Ex21 } from './ex21/ex21';
+import { Ex22 } from './ex22/ex22';
 
 @NgModule({
   declarations: [
@@ -37,11 +40,15 @@ import { Ex28 } from './ex28/ex28';
     FakeProduct,
     FakeProductex27,
     Ex28,
+    Ex21,
+    Ex22,
     
   ],
   imports: [
     BrowserModule,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     Ex14catelog,
