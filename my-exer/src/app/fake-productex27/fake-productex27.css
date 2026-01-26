@@ -1,97 +1,143 @@
-@import
-url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
-body{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 
-
-background-color: #d6d2d2;
-font-family: "Poppins", sans-serif;
-font-weight: 300
+/* ========== GLOBAL ========== */
+body {
+  background: linear-gradient(135deg, #e9e7e7, #d6d2d2);
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: #2c2c2c;
 }
+
+/* ========== CARD ========== */
 .card {
-border: none;
-border-radius: 10px
-}
-.card:hover {
-box-shadow: 5px 6px 6px 2px #cccecf;
-/* transform: scale(1.1) */
+  border: none;
+  border-radius: 14px;
+  background: #ffffff;
+  transition: all 0.35s ease;
+  overflow: hidden;
 }
 
+.card:hover {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+}
+
+/* ========== BADGE PERCENT ========== */
 .percent {
-padding: 5px;
-background-color: #ffc107;
-border-radius: 5px;
-color: #fff;
-font-size: 14px;
-height: 25px;
-width: 60px;
-display: flex;
-justify-content: center;
-align-items: center;
-cursor: pointer
+  padding: 6px 10px;
+  background: linear-gradient(135deg, #ff9800, #ffc107);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  height: 26px;
+  min-width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(255, 193, 7, 0.45);
 }
+
+/* ========== WISHLIST ========== */
 .wishlist {
-height: 30px;
-width: 30px;
-display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 50%;
-background-color: #eee;
-padding: 10px;
-cursor: pointer
+  height: 34px;
+  width: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #f3f3f3;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
+
+.wishlist:hover {
+  background: #dc3545;
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(220, 53, 69, 0.4);
+}
+
+/* ========== IMAGE ========== */
 .img-container {
-position: relative
+  position: relative;
+  background: linear-gradient(135deg, #f8f8f8, #efefef);
 }
+
 .img-container .first {
-position: absolute;
-width: 100%
+  position: absolute;
+  width: 100%;
 }
+
 .img-container img {
-border-top-left-radius: 5px;
-border-top-right-radius: 5px
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  transition: transform 0.4s ease;
 }
+
+.card:hover .img-container img {
+  transform: scale(1.08);
+}
+
 .img-scale {
-width: 200px;
-height: 250px;
-object-fit: cover
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
 }
+
+/* ========== PRODUCT DETAIL ========== */
 .product-detail-container {
-padding: 10px
+  padding: 14px;
 }
+
+/* ========== RATINGS ========== */
 .ratings i {
-color: #a9a6a6
+  color: #ffc107;
+  font-size: 14px;
 }
+
 .ratings span {
-color: #a9a6a6
+  color: #6c757d;
+  font-size: 13px;
 }
+
 .count {
-color: #a9a6a6;
+  color: #6c757d;
+  font-size: 13px;
 }
+
+/* ========== RADIO SIZE / OPTION ========== */
 label.radio {
-cursor: pointer
+  cursor: pointer;
 }
+
 label.radio input {
-position: absolute;
-top: 0;
-left: 0;
-visibility: hidden;
-pointer-events: none
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
+
 label.radio span {
-height: 25px;
-width: 25px;
-display: flex;
-justify-content: center;
-align-items: center;
-border: 2px solid #dc3545;
-color: #dc3545;
-font-size: 10px;
-border-radius: 50%;
-text-transform: uppercase
+  height: 28px;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #dc3545;
+  color: #dc3545;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 50%;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
 }
-label.radio input:checked+span {
-border-color: #dc3545;
-background-color: #dc3545;
-color: #fff
+
+label.radio input:checked + span {
+  border-color: #dc3545;
+  background: linear-gradient(135deg, #dc3545, #ff6b6b);
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(220, 53, 69, 0.45);
 }

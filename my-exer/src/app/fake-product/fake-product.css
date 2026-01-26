@@ -1,0 +1,123 @@
+/* Tổng thể */
+:host {
+  display: block;
+  padding: 24px;
+  background: #f4f6f8;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Tiêu đề */
+p {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+thead {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+thead th {
+  color: #ffffff;
+  padding: 16px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Body */
+tbody tr {
+  transition: all 0.25s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+tbody tr:hover {
+  background-color: #eef2ff;
+  transform: scale(1.01);
+}
+
+/* Cell */
+td {
+  padding: 14px;
+  font-size: 14px;
+  color: #34495e;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Cột title & description căn trái cho dễ đọc */
+td:nth-child(2),
+td:nth-child(4) {
+  text-align: left;
+}
+
+/* Description gọn gàng */
+td:nth-child(4) {
+  max-width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Giá */
+td:nth-child(3) {
+  font-weight: 700;
+  color: #16a085;
+}
+
+/* Category */
+td:nth-child(5) {
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #6c5ce7;
+}
+
+/* Image */
+td img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background: #f1f3f5;
+  border-radius: 12px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+td img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Rating */
+td:last-child {
+  font-weight: 700;
+  color: #f39c12;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  table {
+    font-size: 13px;
+  }
+
+  td img {
+    width: 90px;
+    height: 90px;
+  }
+}

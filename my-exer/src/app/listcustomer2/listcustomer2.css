@@ -1,53 +1,82 @@
-/* Danh sách */
-ol {
-    padding-left: 0;
-    margin: 20px 0;
+/* Tổng thể */
+:host {
+  display: block;
+  padding: 24px;
+  background: linear-gradient(135deg, #f4f6f9, #e6e9ef);
+  font-family: "Poppins", sans-serif;
 }
 
-/* Mỗi khách hàng */
-li {
-    list-style: none;
-    margin-bottom: 15px;
-}
-
-/* Khối nội dung */
-li div {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fafafa;
-    transition: background-color 0.2s, box-shadow 0.2s;
-}
-
-/* Hover */
-li div:hover {
-    background-color: #f0f6ff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Text */
+/* Tiêu đề */
 p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 500;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #2c3e50;
 }
 
-/* Ảnh khách hàng */
-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ccc;
+/* Reset list */
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Item */
+li {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* Content */
+li div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Name */
+li div p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 12px;
+}
+
+/* Image */
+li div img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #667eea;
+  background: #f4f6f8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover img {
+  transform: scale(1.12);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.45);
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-    li div {
-        flex-direction: column;
-        text-align: center;
-    }
+  ol {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  li div p {
+    font-size: 14px;
+  }
 }

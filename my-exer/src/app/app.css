@@ -1,44 +1,125 @@
-*{
-margin:0;
-padding:0;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-#container
-{ border:1px solid blue;
-background:gray;
-float:left;
-top: 60px;
-text-indent:0px;
-width: 100%
+
+/* CONTAINER */
+#container {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 0 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  font-family: "Poppins", sans-serif;
 }
-#container ul{
-float:left;
-list-style:none
+
+/* MAIN MENU */
+#container > ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  height: 64px;
 }
-#container ul li{
-position:relative;
-float:left;
+
+/* MAIN ITEM */
+#container > ul > li {
+  position: relative;
+  margin-right: 30px;
 }
-#container ul li a
-{
-display:block;
-color:black;
-font-weight:bold;
-text-decoration:none;
-padding:.3em 6px;
+
+/* MAIN LINK */
+#container > ul > li > a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
-#container li a:hover
-{color:white;
-background:orange;
+
+/* HOVER MAIN */
+#container > ul > li:hover > a {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
-#container li ul
-{position:absolute;
-display:none;
-width:10em
+
+/* SUB MENU */
+#container ul li ul {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  min-width: 220px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.35s ease;
+  overflow: hidden;
 }
-#container li:hover ul {
-display:block;
+
+/* SHOW SUB MENU */
+#container ul li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
-#container ul li ul li{
-width:100%;
-border:1px solid green
+
+/* SUB ITEM */
+#container ul li ul li {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+#container ul li ul li:last-child {
+  border-bottom: none;
+}
+
+/* SUB LINK */
+#container ul li ul li a {
+  display: block;
+  padding: 12px 18px;
+  color: #34495e;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* SUB HOVER */
+#container ul li ul li a:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #ffffff;
+  padding-left: 28px;
+}
+
+/* ROUTER ACTIVE (Angular) */
+a.router-link-active {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+/* ROUTER OUTLET */
+router-outlet {
+  display: block;
+  margin-top: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  #container > ul {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 0;
+  }
+
+  #container > ul > li {
+    margin-bottom: 10px;
+  }
 }

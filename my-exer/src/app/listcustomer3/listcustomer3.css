@@ -1,60 +1,149 @@
+/* Tổng thể */
+:host {
+  display: block;
+  padding: 24px;
+  background: linear-gradient(135deg, #f4f6f9, #e6e9ef);
+  font-family: "Poppins", sans-serif;
+}
+
 /* Tiêu đề */
 p {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #2c3e50;
 }
 
-/* Select + button */
+/* Filter area */
 select {
-    padding: 6px 10px;
-    margin-right: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+  padding: 8px 14px;
+  margin: 0 10px 16px 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  cursor: pointer;
+  background: #ffffff;
+  transition: all 0.25s ease;
 }
 
+select:hover {
+  border-color: #667eea;
+}
+
+select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Filter button */
 button {
-    padding: 6px 14px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.45);
 }
 
 button:hover {
-    background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
 }
 
-/* Bảng */
+/* Table */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 16px;
-    font-family: Arial, sans-serif;
+  width: 100%;
+  max-width: 700px;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  margin-top: 10px;
 }
 
-th {
-    background-color: #2c3e50;
-    color: #fff;
-    padding: 10px;
-    text-align: left;
-}
-
+/* Remove default border */
+table,
+th,
 td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    vertical-align: middle;
+  border: none;
 }
 
-tr:hover {
-    background-color: #f2f6ff;
+/* Header */
+thead {
+  background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
-/* Ảnh */
-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
+thead th {
+  padding: 14px;
+  color: #ffffff;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Body rows */
+tbody tr {
+  transition: all 0.25s ease;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+tbody tr:hover {
+  background-color: #eef2ff;
+  transform: scale(1.01);
+}
+
+/* Cells */
+td {
+  padding: 14px;
+  font-size: 14px;
+  color: #34495e;
+  text-align: center;
+}
+
+/* Name column */
+td:nth-child(2) {
+  font-weight: 600;
+  text-align: left;
+}
+
+/* Age highlight */
+td:nth-child(3) {
+  font-weight: 700;
+  color: #16a085;
+}
+
+/* Image */
+td img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #667eea;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+td img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table {
+    font-size: 13px;
+  }
+
+  td img {
+    width: 45px;
+    height: 45px;
+  }
 }
