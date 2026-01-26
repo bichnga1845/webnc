@@ -13,6 +13,7 @@ import { Ex13 } from './ex13/ex13';
 import { Ex18 } from './ex18/ex18';
 import { FakeProduct } from './fake-product/fake-product';
 import { FakeProductex27 } from './fake-productex27/fake-productex27';
+import { Ex28 } from './ex28/ex28';
 
 
 const routes: Routes = [
@@ -36,6 +37,8 @@ const routes: Routes = [
   //ex27
   {path:'ex27',component: FakeProductex27},
 
+  //ex28
+  {path:'ex28',component: Ex28},
 
 
 

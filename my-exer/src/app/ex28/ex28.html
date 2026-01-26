@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Bitcoin Price Index (BPI)</h2>
+  
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  
+  <div *ngIf="bitcoinData" class="card">
+    <div class="card-header bg-warning">
+      <h4>{{ bitcoinData.chartName }}</h4>
+    </div>
+    
+    <div class="card-body">
+      <div class="mb-3">
+        <strong>Last Updated:</strong> {{ time?.updated }}
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4" *ngFor="let currency of bpi | keyvalue">
+          <div class="card mb-3">
+            <div class="card-body text-center">
+              <h5>{{ currency.value.code }}</h5>
+              <p class="text-muted">{{ currency.value.description }}</p>
+              <h3 class="text-primary">
+                <span [innerHTML]="currency.value.symbol"></span>
+                {{ currency.value.rate }}
+              </h3>
+              <small class="text-secondary">Rate: {{ currency.value.rate_float | number:'1.2-2' }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-3">
+        <small class="text-muted">{{ bitcoinData.disclaimer }}</small>
+      </div>
+    </div>
+  </div>
+</div>
