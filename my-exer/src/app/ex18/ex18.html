@@ -1,0 +1,31 @@
+
+<table class="main-table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let type of customerTypes">
+      <!-- Dòng tiêu đề loại khách -->
+      <tr class="type-row">
+        <td colspan="5">{{ type.CustomerTypeId }} - {{ type.CustomerTypeName }}</td>
+      </tr>
+      
+      <!-- Dữ liệu khách hàng -->
+      <tr *ngFor="let c of type.Customers">
+        <td>{{ c.Id }}</td>
+        <td>{{ c.Name }}</td>
+        <td>{{ c.Email }}</td>
+        <td>{{ c.Age }}</td>
+        <td class="img-cell">
+          <img [src]="c.Image" alt="{{ c.Name }}" />
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

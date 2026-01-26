@@ -1,0 +1,42 @@
+[
+{"CustomerTypeId":1,"CustomerTypeName":"VIP",
+"Customers":[{
+    "Id":"Cus123",
+    "Name":"Obama",
+    "Email":"obama@gmail.com",
+    "Age":67,
+    "Image":"https://gdb.voanews.com/84492138-12f9-4886-a98f-7ee6fc325c1c_w408_r1_s.jpg"
+},
+{
+    "Id":"Cus456",
+    "Name":"Kim jong Un",
+    "Email":"unun@gmail.com",
+    "Age":38,
+    "Image":"https://media-cldnry.s-nbcnews.com/image/upload/newscms/2016_19/1534611/160512-kim-jong-un-mn-1120.JPG"
+} , 
+{
+    "Id":"Cus789",
+    "Name":"Putin",
+    "Email":"putin@gmail.com",
+    "Age":77,
+    "Image":"https://mediabls.mediatech.vn/upload/image/202508/medium/585449_2745d2fc9427deb621fd31e1671a254d.jpg"
+}]
+},
+{"CustomerTypeId":2,"CustomerTypeName":"Normal",
+"Customers":[{
+    "Id":"Cus000",
+    "Name":"Hồ Cẩm Đào",
+    "Email":"hodao@gmail.com",
+    "Age":16,
+    "Image":"https://trithucvn2.net/wp-content/uploads/2017/06/Ho-Cam-Dao.jpg"
+},
+{
+    "Id":"Cus111",
+    "Name":"Tap Can Binh",
+    "Email":"binhbinh@gmail.com",
+    "Age":67,
+    "Image":"https://file3.qdnd.vn/data/images/0/2023/12/11/upload_2201/tap%20can%20binh%201.jpg?dpi=150&quality=100&w=870"
+}
+]
+}
+]

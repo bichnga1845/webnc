@@ -1,0 +1,8 @@
+[
+{
+"context": ["/products"],
+"target": "https://fakestoreapi.com", 
+"changeOrigin":true,
+"logLevel":"debug"
+}
+]
