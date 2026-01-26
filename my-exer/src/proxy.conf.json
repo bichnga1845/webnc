@@ -4,5 +4,11 @@
 "target": "https://fakestoreapi.com", 
 "changeOrigin":true,
 "logLevel":"debug"
+},
+{
+"context": ["/ticker"],
+"target": "https://api.alternative.me/v1", 
+"changeOrigin":true,
+"logLevel":"debug"
 }
 ]
