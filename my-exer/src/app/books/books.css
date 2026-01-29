@@ -1,0 +1,73 @@
+/* Title */
+p {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+/* Error */
+.error {
+  color: #e74c3c;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-family: Arial, sans-serif;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Header (dòng 1) */
+table > tr:first-child,
+table > tr:first-child td {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  font-weight: 600;
+}
+
+/* Body td */
+table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-weight: normal; /* 👈 đảm bảo KHÔNG bị đậm */
+}
+
+/* Padding cho header */
+table > tr:first-child td {
+  padding: 12px;
+}
+
+/* Hover row */
+table tbody tr:hover {
+  background-color: #f4f8ff;
+  transition: 0.25s;
+}
+
+/* Price column */
+table tbody td:nth-child(3) {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+/* Image */
+table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+}
+
+table img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}

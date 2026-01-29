@@ -16,6 +16,7 @@ import { FakeProductex27 } from './fake-productex27/fake-productex27';
 import { Ex28 } from './ex28/ex28';
 import { Ex21 } from './ex21/ex21';
 import { Ex22 } from './ex22/ex22';
+import { Books } from './books/books';
 
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
   //ex22 - Course Registration
   {path:'ex22',component: Ex22},
 
-
+  //ex39 - Book API Service
+  {path:"ex39",component: Books},
 
 
   {path:"**",component: Notfound}, //luôn để cuối cùng, mục đích để ngăn ai đó phá
