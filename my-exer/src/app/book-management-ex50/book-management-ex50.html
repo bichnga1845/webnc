@@ -1,0 +1,236 @@
+<div class="container">
+  <h2>Book Management System - Ex50</h2>
+  
+  <!-- Error message -->
+  <div *ngIf="errMessage" class="error-message">{{errMessage}}</div>
+  
+  <!-- Book List View -->
+  <div *ngIf="!showCreateForm && !showEditForm && !showDetails">
+    <button class="btn-create" (click)="showCreateNewForm()">Create New</button>
+    
+    <table class="book-table">
+      <thead>
+        <tr>
+          <th>Tensach</th>
+          <th>Giaban</th>
+          <th>Mota</th>
+          <th>Anhbia</th>
+          <th>Ngaycapnhat</th>
+          <th>Soluongton</th>
+          <th>MaCD</th>
+          <th>MaNXB</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>{{book.Tensach || book.BookName}}</td>
+          <td>{{book.Giaban || book.Price}}</td>
+          <td class="description-cell">{{book.Mota}}</td>
+          <td>
+            <img *ngIf="book.Image" 
+                 [src]="getImageUrl(book.Image)" 
+                 (error)="handleImageError($event, book.Image)"
+                 alt="{{book.BookName}}" 
+                 class="book-thumbnail">
+          </td>
+          <td>{{book.Ngaycapnhat}}</td>
+          <td>{{book.Soluongton}}</td>
+          <td>{{book.MaCD}}</td>
+          <td>{{book.MaNXB}}</td>
+          <td class="actions">
+            <a href="javascript:void(0)" (click)="showEditBookForm(book)">Edit</a> |
+            <a href="javascript:void(0)" (click)="showBookDetails(book)">Details</a> |
+            <a href="javascript:void(0)" (click)="deleteBook(book.BookId)" class="delete-link">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Create New Book Form -->
+  <div *ngIf="showCreateForm" class="form-container">
+    <h3>Create New Book</h3>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Book ID:</label>
+          <input type="text" [(ngModel)]="newBook.BookId" name="bookId" required>
+        </div>
+        <div class="form-group">
+          <label>Tên sách:</label>
+          <input type="text" [(ngModel)]="newBook.Tensach" name="tensach" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Book Name:</label>
+          <input type="text" [(ngModel)]="newBook.BookName" name="bookName" required>
+        </div>
+        <div class="form-group">
+          <label>Giá bán:</label>
+          <input type="number" [(ngModel)]="newBook.Giaban" name="giaban">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Price:</label>
+          <input type="number" [(ngModel)]="newBook.Price" name="price">
+        </div>
+        <div class="form-group">
+          <label>Số lượng tồn:</label>
+          <input type="number" [(ngModel)]="newBook.Soluongton" name="soluongton">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Mã chủ đề:</label>
+          <input type="text" [(ngModel)]="newBook.MaCD" name="macd">
+        </div>
+        <div class="form-group">
+          <label>Mã NXB:</label>
+          <input type="text" [(ngModel)]="newBook.MaNXB" name="manxb">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ngày cập nhật:</label>
+        <input type="text" [(ngModel)]="newBook.Ngaycapnhat" name="ngaycapnhat" placeholder="dd/mm/yyyy">
+      </div>
+      <div class="form-group">
+        <label>Mô tả:</label>
+        <textarea [(ngModel)]="newBook.Mota" name="mota"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Ảnh bìa:</label>
+        <input type="file" (change)="onFileSelected($event, false)" accept="image/*">
+        <div *ngIf="uploadProgress > 0" class="progress-bar">
+          <div class="progress-fill" [style.width.%]="uploadProgress">{{uploadProgress}}%</div>
+        </div>
+        <p *ngIf="selectedFileName" class="file-name">Selected: {{selectedFileName}}</p>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-save" (click)="createBook()">Create</button>
+        <button type="button" class="btn-cancel" (click)="cancelForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Edit Book Form -->
+  <div *ngIf="showEditForm && editingBook" class="form-container">
+    <h3>Edit Book</h3>
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Book ID:</label>
+          <input type="text" [(ngModel)]="editingBook.BookId" name="bookId" readonly>
+        </div>
+        <div class="form-group">
+          <label>Tên sách:</label>
+          <input type="text" [(ngModel)]="editingBook.Tensach" name="tensach" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Book Name:</label>
+          <input type="text" [(ngModel)]="editingBook.BookName" name="bookName" required>
+        </div>
+        <div class="form-group">
+          <label>Giá bán:</label>
+          <input type="number" [(ngModel)]="editingBook.Giaban" name="giaban">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Price:</label>
+          <input type="number" [(ngModel)]="editingBook.Price" name="price">
+        </div>
+        <div class="form-group">
+          <label>Số lượng tồn:</label>
+          <input type="number" [(ngModel)]="editingBook.Soluongton" name="soluongton">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Mã chủ đề:</label>
+          <input type="text" [(ngModel)]="editingBook.MaCD" name="macd">
+        </div>
+        <div class="form-group">
+          <label>Mã NXB:</label>
+          <input type="text" [(ngModel)]="editingBook.MaNXB" name="manxb">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Ngày cập nhật:</label>
+        <input type="text" [(ngModel)]="editingBook.Ngaycapnhat" name="ngaycapnhat" placeholder="dd/mm/yyyy">
+      </div>
+      <div class="form-group">
+        <label>Mô tả:</label>
+        <textarea [(ngModel)]="editingBook.Mota" name="mota"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Ảnh bìa hiện tại:</label>
+        <img *ngIf="editingBook.Image" 
+             [src]="getImageUrl(editingBook.Image)" 
+             (error)="handleImageError($event, editingBook.Image)"
+             alt="{{editingBook.BookName}}" 
+             class="preview-image">
+        <label>Đổi ảnh bìa:</label>
+        <input type="file" (change)="onFileSelected($event, true)" accept="image/*">
+        <div *ngIf="uploadProgress > 0" class="progress-bar">
+          <div class="progress-fill" [style.width.%]="uploadProgress">{{uploadProgress}}%</div>
+        </div>
+        <p *ngIf="selectedFileName" class="file-name">New: {{selectedFileName}}</p>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-save" (click)="updateBook()">Update</button>
+        <button type="button" class="btn-cancel" (click)="cancelForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Book Details View -->
+  <div *ngIf="showDetails && selectedBook" class="details-container">
+    <h3>Chi tiết sách</h3>
+    <div class="details-content">
+      <div class="detail-row">
+        <strong>Book ID:</strong> {{selectedBook.BookId}}
+      </div>
+      <div class="detail-row">
+        <strong>Tên sách:</strong> {{selectedBook.Tensach || selectedBook.BookName}}
+      </div>
+      <div class="detail-row">
+        <strong>Book Name:</strong> {{selectedBook.BookName}}
+      </div>
+      <div class="detail-row">
+        <strong>Giá bán:</strong> {{selectedBook.Giaban || selectedBook.Price}}
+      </div>
+      <div class="detail-row">
+        <strong>Price:</strong> {{selectedBook.Price}}
+      </div>
+      <div class="detail-row">
+        <strong>Số lượng tồn:</strong> {{selectedBook.Soluongton}}
+      </div>
+      <div class="detail-row">
+        <strong>Mã chủ đề:</strong> {{selectedBook.MaCD}}
+      </div>
+      <div class="detail-row">
+        <strong>Mã NXB:</strong> {{selectedBook.MaNXB}}
+      </div>
+      <div class="detail-row">
+        <strong>Ngày cập nhật:</strong> {{selectedBook.Ngaycapnhat}}
+      </div>
+      <div class="detail-row">
+        <strong>Mô tả:</strong> {{selectedBook.Mota}}
+      </div>
+      <div class="detail-row">
+        <strong>Ảnh bìa:</strong><br>
+        <img *ngIf="selectedBook.Image" 
+             [src]="getImageUrl(selectedBook.Image)" 
+             (error)="handleImageError($event, selectedBook.Image)"
+             alt="{{selectedBook.BookName}}" 
+             class="detail-image">
+      </div>
+    </div>
+    <button class="btn-back" (click)="cancelForm()">Back to List</button>
+  </div>
+</div>

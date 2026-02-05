@@ -20,6 +20,7 @@ import { Books } from './books/books';
 import { BookDetailComponent } from './book-detail-component/book-detail-component';
 import { FileUploadComponent } from './file-upload-component/file-upload-component';
 import { NewBookComponent } from './new-book-component/new-book-component';
+import { BookManagementEx50 } from './book-management-ex50/book-management-ex50';
 
 
 const routes: Routes = [
@@ -64,6 +65,9 @@ const routes: Routes = [
 
   //ex43
   {path:"ex43",component: NewBookComponent},
+
+  //ex50 - Book Management CRUD
+  {path:"ex50",component: BookManagementEx50},
 
   
   {path:"**",component: Notfound}, //luôn để cuối cùng, mục đích để ngăn ai đó phá

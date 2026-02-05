@@ -1,0 +1,108 @@
+{
+  "books": [
+    {
+      "BookId": "BK001",
+      "BookName": "Clean Code",
+      "Tensach": "Mã nguồn sạch",
+      "Price": 450000,
+      "Giaban": "450,000 VNĐ",
+      "Mota": "Hướng dẫn viết code sạch, dễ đọc, dễ bảo trì cho lập trình viên chuyên nghiệp",
+      "Image": "https://via.placeholder.com/150/0066CC/FFFFFF?text=Clean+Code",
+      "Ngaycapnhat": "15/01/2026",
+      "Soluongton": "25",
+      "MaCD": "CD01",
+      "MaNXB": "NXB01"
+    },
+    {
+      "BookId": "BK002",
+      "BookName": "Design Patterns",
+      "Tensach": "Mẫu thiết kế",
+      "Price": 520000,
+      "Giaban": "520,000 VNĐ",
+      "Mota": "Các mẫu thiết kế phần mềm kinh điển, giải pháp cho các vấn đề lập trình phổ biến",
+      "Image": "https://via.placeholder.com/150/FF6633/FFFFFF?text=Design+Patterns",
+      "Ngaycapnhat": "20/01/2026",
+      "Soluongton": "18",
+      "MaCD": "CD01",
+      "MaNXB": "NXB02"
+    },
+    {
+      "BookId": "BK003",
+      "BookName": "The Pragmatic Programmer",
+      "Tensach": "Lập trình viên thực dụng",
+      "Price": 480000,
+      "Giaban": "480,000 VNĐ",
+      "Mota": "Kỹ năng và kiến thức cần thiết để trở thành một lập trình viên chuyên nghiệp",
+      "Image": "https://via.placeholder.com/150/33CC33/FFFFFF?text=Pragmatic",
+      "Ngaycapnhat": "25/01/2026",
+      "Soluongton": "30",
+      "MaCD": "CD01",
+      "MaNXB": "NXB01"
+    },
+    {
+      "BookId": "BK004",
+      "BookName": "JavaScript: The Good Parts",
+      "Tensach": "JavaScript: Tinh hoa",
+      "Price": 380000,
+      "Giaban": "380,000 VNĐ",
+      "Mota": "Những phần tốt nhất của JavaScript và cách sử dụng ngôn ngữ hiệu quả",
+      "Image": "https://via.placeholder.com/150/FFCC00/000000?text=JavaScript",
+      "Ngaycapnhat": "30/01/2026",
+      "Soluongton": "22",
+      "MaCD": "CD02",
+      "MaNXB": "NXB03"
+    },
+    {
+      "BookId": "BK005",
+      "BookName": "You Don't Know JS",
+      "Tensach": "Bạn chưa biết JS",
+      "Price": 420000,
+      "Giaban": "420,000 VNĐ",
+      "Mota": "Series sách đi sâu vào các khái niệm cốt lõi của JavaScript",
+      "Image": "https://via.placeholder.com/150/CC0066/FFFFFF?text=YDKJS",
+      "Ngaycapnhat": "02/02/2026",
+      "Soluongton": "35",
+      "MaCD": "CD02",
+      "MaNXB": "NXB03"
+    },
+    {
+      "BookId": "BK006",
+      "BookName": "Refactoring",
+      "Tensach": "Tái cấu trúc mã nguồn",
+      "Price": 490000,
+      "Giaban": "490,000 VNĐ",
+      "Mota": "Cải thiện thiết kế của code hiện có, làm cho nó dễ đọc và dễ bảo trì hơn",
+      "Image": "https://via.placeholder.com/150/9933CC/FFFFFF?text=Refactoring",
+      "Ngaycapnhat": "10/02/2026",
+      "Soluongton": "28",
+      "MaCD": "CD01",
+      "MaNXB": "NXB01"
+    },
+    {
+      "BookId": "BK007",
+      "BookName": "Introduction to Algorithms",
+      "Tensach": "Nhập môn thuật toán",
+      "Price": 680000,
+      "Giaban": "680,000 VNĐ",
+      "Mota": "Giáo trình kinh điển về thuật toán và cấu trúc dữ liệu",
+      "Image": "https://via.placeholder.com/150/006699/FFFFFF?text=Algorithms",
+      "Ngaycapnhat": "18/01/2026",
+      "Soluongton": "15",
+      "MaCD": "CD03",
+      "MaNXB": "NXB02"
+    },
+    {
+      "BookId": "BK008",
+      "BookName": "Head First Design Patterns",
+      "Tensach": "Mẫu thiết kế căn bản",
+      "Price": 440000,
+      "Giaban": "440,000 VNĐ",
+      "Mota": "Học design patterns qua các ví dụ thực tế và hình ảnh sinh động",
+      "Image": "https://via.placeholder.com/150/FF9900/FFFFFF?text=Head+First",
+      "Ngaycapnhat": "22/01/2026",
+      "Soluongton": "32",
+      "MaCD": "CD01",
+      "MaNXB": "NXB03"
+    }
+  ]
+}
