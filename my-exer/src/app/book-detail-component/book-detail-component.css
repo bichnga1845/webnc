@@ -1,0 +1,78 @@
+/* Tổng thể */
+p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* Lỗi */
+p:nth-child(2) {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Search box */
+input[type="text"] {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin-right: 6px;
+}
+
+input[type="text"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Button */
+button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #3498db;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #217dbb;
+}
+
+/* Table */
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 360px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+  text-align: center;
+}
+
+/* Label column */
+td:first-child {
+  font-weight: 600;
+  color: #555;
+  width: 120px;
+}
+
+/* Image */
+img {
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

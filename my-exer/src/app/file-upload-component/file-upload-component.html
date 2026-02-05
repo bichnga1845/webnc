@@ -1,0 +1,46 @@
+<div class="upload-container">
+    <h2>Upload Image to Server (Ex 48-49)</h2>
+    
+    <div class="upload-section">
+        <input type="file" class="file-input" style="display: none;"
+                (change)="onFileSelected($event)" #fileUpload name="image" accept="image/*">
+        
+        <div class="upload-box">
+            <p><strong>Selected File:</strong> <span class="filename">{{fileName || "No file uploaded yet."}}</span></p>
+            <button class="btn-choose" (click)="fileUpload.click()">📁 Choose Image File</button>
+            
+            <!-- Preview ngay sau khi chọn file -->
+            <div *ngIf="previewImageUrl && !uploadSuccess" class="preview-box">
+                <h4>Preview:</h4>
+                <img [src]="previewImageUrl" alt="Preview" class="preview-image">
+            </div>
+            
+            <div *ngIf="uploadProgress > 0 && uploadProgress < 100" class="progress-section">
+                <p>Upload Progress: {{uploadProgress}}%</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" [style.width.%]="uploadProgress"></div>
+                </div>
+                <button class="btn-cancel" (click)="cancelUpload()">Cancel Upload</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="uploadSuccess" class="result-section">
+        <h3 style="color: green;">✓ Upload Successfully!</h3>
+        <div class="image-info">
+            <p><strong>File Name:</strong> {{fileName}}</p>
+            <p><strong>Image URL:</strong> <code>{{uploadedImageUrl}}</code></p>
+        </div>
+        <div class="image-preview">
+            <h4>Preview:</h4>
+            <img [src]="uploadedImageUrl" alt="Uploaded Image">
+        </div>
+        <div class="image-urls">
+            <h4>Use in your code:</h4>
+            <p><strong>HTML:</strong></p>
+            <pre>&lt;img src="{{uploadedImageUrl}}"&gt;</pre>
+            <p><strong>Angular:</strong></p>
+            <pre>&lt;img src="http://localhost:3001/image/{{fileName}}"&gt;</pre>
+        </div>
+    </div>
+</div>

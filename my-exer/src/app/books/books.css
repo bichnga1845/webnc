@@ -1,73 +1,81 @@
-/* Title */
+/* Text */
 p {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
-  color: #2c3e50;
+  margin-bottom: 14px;
+  color: #1f2937;
 }
 
 /* Error */
 .error {
-  color: #e74c3c;
+  color: #dc2626;
   font-style: italic;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 /* Table */
 table {
   width: 100%;
+  max-width: 520px;          /* 👈 RỘNG hơn */
+  margin-top: 16px;
   border-collapse: collapse;
-  background: #fff;
-  font-family: Arial, sans-serif;
-  border-radius: 10px;
+  background: #ffffff;
+  border-radius: 16px;       /* bo mềm hơn */
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
 }
 
-/* Header (dòng 1) */
-table > tr:first-child,
-table > tr:first-child td {
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
-  color: white;
+/* Rows */
+tr {
+  transition: background 0.25s ease;
+}
+
+tr:hover {
+  background: #f8fafc;
+}
+
+/* Cells */
+td {
+  padding: 18px 20px;        /* 👈 THOÁNG hơn */
+  font-size: 15.5px;
+  color: #374151;
+  border-bottom: 1px solid #eef2f7;
+}
+
+/* Label column */
+td:first-child {
   font-weight: 600;
+  color: #111827;
+  width: 150px;              /* 👈 RỘNG cột label */
 }
 
-/* Body td */
-table tbody td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #eee;
-  color: #333;
-  font-weight: normal; /* 👈 đảm bảo KHÔNG bị đậm */
+/* Last row (image) */
+tr:last-child td {
+  border-bottom: none;
+  text-align: center;
+  padding: 24px;
 }
 
-/* Padding cho header */
-table > tr:first-child td {
-  padding: 12px;
-}
-
-/* Hover row */
-table tbody tr:hover {
-  background-color: #f4f8ff;
-  transition: 0.25s;
-}
-
-/* Price column */
-table tbody td:nth-child(3) {
-  color: #27ae60;
+/* Price */
+td:nth-child(2) {
+  color: #047857;
   font-weight: 600;
 }
 
 /* Image */
-table img {
-  width: 50px;
-  height: 50px;
+img {
+  width: 96px;               /* 👈 to hơn */
+  height: 96px;
+  border-radius: 12px;
   object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  transition: transform 0.3s ease;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
-table img:hover {
-  transform: scale(1.2);
-  cursor: pointer;
+img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
 }

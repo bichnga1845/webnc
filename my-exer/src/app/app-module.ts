@@ -24,6 +24,9 @@ import { Ex28 } from './ex28/ex28';
 import { Ex21 } from './ex21/ex21';
 import { Ex22 } from './ex22/ex22';
 import { Books } from './books/books';
+import { BookDetailComponent } from './book-detail-component/book-detail-component';
+import { FileUploadComponent } from './file-upload-component/file-upload-component';
+import { NewBookComponent } from './new-book-component/new-book-component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { Books } from './books/books';
     Ex21,
     Ex22,
     Books,
+    BookDetailComponent,
+    FileUploadComponent,
+    NewBookComponent,
     
   ],
   imports: [

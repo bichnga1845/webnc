@@ -1,20 +1,45 @@
-<p>books works!</p>
-{{errMessage}}
+<h2>Books List</h2>
+<p style="color: red;">{{errMessage}}</p>
+<a routerLink="/ex43">New a book</a>
 <table border="1">
-    <tr>
-        <td>BookId</td>
-        <td>BookName</td>
-        <td>Price</td>
-        <td>Image</td>
-    </tr>
+    <thead>
+        <tr>
+            <td><strong>BookId</strong></td>
+            <td><strong>BookName</strong></td>
+            <td><strong>Price</strong></td>
+            <td><strong>Image</strong></td>
+            <td><strong>Upload New Image</strong></td>
+        </tr>
+    </thead>
     <tbody>
         <tr *ngFor="let book of books">
             <td>{{book.BookId}}</td>
             <td>{{book.BookName}}</td>
             <td>{{book.Price}} </td>
             <td>
-                <img src="http://localhost:3000/images/{{book.Image}}" width="50px"
-                height="50px">
+                <img [src]="'http://localhost:3001/image/' + book.Image" 
+                     (error)="handleImageError($event, book.Image)"
+                     width="50px" height="50px" 
+                     (click)="view_detail(book.BookId)" 
+                     style="cursor: pointer;">
+            </td>
+            <td style="text-align: center;">
+                <input type="file" #fileInput 
+                       (change)="onFileSelected($event, book.BookId)" 
+                       accept="image/*" 
+                       style="display: none;">
+                <button (click)="fileInput.click()" 
+                        style="background: #2196F3; color: white; padding: 5px 10px; border: none; border-radius: 3px; cursor: pointer;">
+                    {{book.Image ? '🔄 Replace' : '📤 Upload'}}
+                </button>
+                <div *ngIf="uploadProgress[book.BookId] > 0 && uploadProgress[book.BookId] < 100" 
+                     style="margin-top: 5px; font-size: 12px; color: green;">
+                    {{uploadProgress[book.BookId]}}%
+                </div>
+                <div *ngIf="uploadProgress[book.BookId] == 100" 
+                     style="margin-top: 5px; font-size: 12px; color: green;">
+                    ✓ Done
+                </div>
             </td>
         </tr>
     </tbody>
