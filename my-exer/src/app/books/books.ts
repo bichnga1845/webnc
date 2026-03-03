@@ -88,4 +88,18 @@ export class Books {
       img.src = `http://localhost:3000/images/${imageName}`;
     }
   }
+
+  process_remove(book:any)
+  {
+    if(confirm('Are you sure you want to delete this book "' + book.BookName + '"?'))
+    {
+      this._service.deleteBook(book.BookId).subscribe({
+        next:(data)=>{
+          alert('Xóa thành công!');
+          this.loadBooks();
+        },
+        error:(err)=>{this.errMessage=err}
+      })
+    }
+  }
 }

@@ -23,6 +23,11 @@
                      (click)="view_detail(book.BookId)" 
                      style="cursor: pointer;">
             </td>
+            <td>
+                <a [routerLink]="['/ex45', book.BookId]">Update</a>
+                |
+                <a (click)="process_remove(book)">Delete</a>
+            </td>
             <td style="text-align: center;">
                 <input type="file" #fileInput 
                        (change)="onFileSelected($event, book.BookId)" 

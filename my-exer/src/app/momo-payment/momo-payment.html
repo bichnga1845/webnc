@@ -1,0 +1,154 @@
+<div class="momo-payment-container">
+  <!-- Header -->
+  <div class="payment-header">
+    <h1>💳 Thanh toán MoMo</h1>
+    <p>Thanh toán trực tuyến an toàn với Ví điện tử MoMo</p>
+  </div>
+
+  <!-- Nếu là trang result -->
+  <div *ngIf="paymentResult" class="payment-result">
+    <div class="result-card" [ngClass]="isPaymentSuccess() ? 'success' : 'failed'">
+      <!-- Success -->
+      <div *ngIf="isPaymentSuccess()" class="result-content">
+        <div class="success-icon">✅</div>
+        <h2>Thanh toán thành công!</h2>
+        <p class="result-message">{{ paymentResult.message }}</p>
+        
+        <div class="result-details">
+          <div class="detail-row">
+            <span class="label">Mã giao dịch:</span>
+            <span class="value">{{ paymentResult.transId }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Mã đơn hàng:</span>
+            <span class="value">{{ paymentResult.orderId }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Số tiền:</span>
+            <span class="value amount">{{ formatCurrency(+paymentResult.amount) }}</span>
+          </div>
+        </div>
+
+        <button class="btn-primary" (click)="backToPayment()">
+          Thanh toán đơn khác
+        </button>
+      </div>
+
+      <!-- Failed -->
+      <div *ngIf="!isPaymentSuccess()" class="result-content">
+        <div class="error-icon">❌</div>
+        <h2>Thanh toán thất bại</h2>
+        <p class="result-message">{{ paymentResult.message }}</p>
+        
+        <div class="result-details">
+          <div class="detail-row">
+            <span class="label">Mã lỗi:</span>
+            <span class="value">{{ paymentResult.resultCode }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Mã đơn hàng:</span>
+            <span class="value">{{ paymentResult.orderId }}</span>
+          </div>
+        </div>
+
+        <button class="btn-primary" (click)="backToPayment()">
+          Thử lại
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nếu là trang payment form -->
+  <div *ngIf="!paymentResult" class="payment-form-section">
+    <!-- Alert messages -->
+    <div *ngIf="errorMessage" class="alert alert-error">
+      <span class="alert-icon">⚠️</span>
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+      <span class="alert-icon">✅</span>
+      <span>{{ successMessage }}</span>
+    </div>
+
+    <!-- Payment Form -->
+    <div class="payment-form">
+      <div class="form-group">
+        <label for="amount">Số tiền (VND) <span class="required">*</span></label>
+        <input 
+          type="number" 
+          id="amount" 
+          [(ngModel)]="amount" 
+          [disabled]="isLoading"
+          placeholder="Nhập số tiền"
+          min="1000"
+          step="1000"
+        />
+        <small class="form-hint">Số tiền tối thiểu: 1,000 VND</small>
+      </div>
+
+      <div class="form-group">
+        <label for="orderInfo">Thông tin đơn hàng <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="orderInfo" 
+          [(ngModel)]="orderInfo" 
+          [disabled]="isLoading"
+          placeholder="VD: Thanh toán đơn hàng #12345"
+          maxlength="100"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="extraData">Thông tin thêm (tùy chọn)</label>
+        <textarea 
+          id="extraData" 
+          [(ngModel)]="extraData" 
+          [disabled]="isLoading"
+          placeholder="Thông tin bổ sung (nếu có)"
+          rows="3"
+          maxlength="200"
+        ></textarea>
+      </div>
+
+      <!-- Summary -->
+      <div class="payment-summary">
+        <h3>Chi tiết thanh toán</h3>
+        <div class="summary-row">
+          <span>Số tiền:</span>
+          <span class="amount">{{ formatCurrency(amount) }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Phí giao dịch:</span>
+          <span>Miễn phí</span>
+        </div>
+        <div class="summary-row total">
+          <span>Tổng cộng:</span>
+          <span class="amount">{{ formatCurrency(amount) }}</span>
+        </div>
+      </div>
+
+      <!-- Payment button -->
+      <button 
+        class="btn-payment" 
+        (click)="handlePayment()"
+        [disabled]="isLoading"
+      >
+        <span *ngIf="!isLoading">
+          <img src="https://developers.momo.vn/v3/assets/images/icon-52bd5808cecdb1970e1aeec3c31b3ee1.png" alt="MoMo" class="momo-icon">
+          Thanh toán với MoMo
+        </span>
+        <span *ngIf="isLoading" class="loading">
+          <span class="spinner"></span>
+          Đang xử lý...
+        </span>
+      </button>
+
+      <!-- Info -->
+      <div class="payment-info">
+        <p>🔒 Giao dịch được bảo mật bởi MoMo</p>
+        <p>📱 Hỗ trợ thanh toán qua: Ví MoMo, ATM, Thẻ quốc tế</p>
+      </div>
+    </div>
+  </div>
+</div>

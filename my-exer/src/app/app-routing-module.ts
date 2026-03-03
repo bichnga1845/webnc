@@ -21,6 +21,9 @@ import { BookDetailComponent } from './book-detail-component/book-detail-compone
 import { FileUploadComponent } from './file-upload-component/file-upload-component';
 import { NewBookComponent } from './new-book-component/new-book-component';
 import { BookManagementEx50 } from './book-management-ex50/book-management-ex50';
+import { BookUpdate } from './book-update/book-update';
+import { FashionComponent } from './fashion-component/fashion-component';
+import { MomoPaymentComponent } from './momo-payment/momo-payment';
 
 
 const routes: Routes = [
@@ -68,6 +71,16 @@ const routes: Routes = [
 
   //ex50 - Book Management CRUD
   {path:"ex50",component: BookManagementEx50},
+
+  //ex45
+  {path:"ex45/:id",component: BookUpdate},
+
+  //ex53
+  {path:"ex53",component: FashionComponent},
+
+  //MoMo Payment
+  {path:"momo-payment",component: MomoPaymentComponent},
+  {path:"momo-payment/result",component: MomoPaymentComponent},
 
   
   {path:"**",component: Notfound}, //luôn để cuối cùng, mục đích để ngăn ai đó phá

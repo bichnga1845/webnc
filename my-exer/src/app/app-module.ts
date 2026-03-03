@@ -28,6 +28,8 @@ import { BookDetailComponent } from './book-detail-component/book-detail-compone
 import { FileUploadComponent } from './file-upload-component/file-upload-component';
 import { NewBookComponent } from './new-book-component/new-book-component';
 import { BookManagementEx50 } from './book-management-ex50/book-management-ex50';
+import { BookUpdate } from './book-update/book-update';
+import { FashionComponent } from './fashion-component/fashion-component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { BookManagementEx50 } from './book-management-ex50/book-management-ex50'
     FileUploadComponent,
     NewBookComponent,
     BookManagementEx50,
+    BookUpdate,
+    FashionComponent,
     
   ],
   imports: [

@@ -54,5 +54,31 @@ postBook(aBook:any):Observable<any>
   retry(3),
   catchError(this.handleError))
   }
+
+putBook(aBook:any):Observable<any>
+{
+  const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")
+  const requestOptions:Object={
+  headers:headers,
+  responseType:"text"
+  }
+  return this._http.put<any>("http://localhost:3000/books/"+aBook.BookId,JSON.stringify(aBook),requestOptions).pipe(
+  map(res=>JSON.parse(res) as IBook),
+  retry(3),
+  catchError(this.handleError))
+}
+
+deleteBook(bookId:string):Observable<any>
+{
+  const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")
+  const requestOptions:Object={
+  headers:headers,
+  responseType:"text"
+  }
+  return this._http.delete<any>("http://localhost:3000/books/"+bookId,requestOptions).pipe(
+  map(res=>JSON.parse(res) as Array<IBook>),
+  retry(3),
+  catchError(this.handleError))
+}
 }
 
