@@ -34,6 +34,8 @@ import { FashionDetailComponent } from './fashion-detail-component/fashion-detai
 import { LoginComponent } from './login/login';
 import { RegisterComponent } from './register/register';
 import { MomoPaymentComponent } from './momo-payment/momo-payment';
+import { ProductListComponent } from './product-list/product-list';
+import { CartComponent } from './cart/cart';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { MomoPaymentComponent } from './momo-payment/momo-payment';
     FashionDetailComponent,
     LoginComponent,
     RegisterComponent,
+    ProductListComponent,
+    CartComponent,
     
   ],
   imports: [

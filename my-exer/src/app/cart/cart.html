@@ -1,0 +1,69 @@
+<div class="cart-container">
+  <h1 class="cart-title">Shopping cart</h1>
+
+  <div *ngIf="loading" class="loading">
+    <p>Đang tải giỏ hàng...</p>
+  </div>
+
+  <div *ngIf="!loading && cartItems.length === 0" class="empty-cart">
+    <h2>Giỏ hàng trống</h2>
+    <p>Bạn chưa có sản phẩm nào trong giỏ hàng.</p>
+    <button class="btn-continue" (click)="continueShopping()">Continue shopping</button>
+  </div>
+
+  <div *ngIf="!loading && cartItems.length > 0">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th class="col-remove">Remove</th>
+          <th class="col-sku">SKU</th>
+          <th class="col-image">Image</th>
+          <th class="col-product">Product(s)</th>
+          <th class="col-price">Price</th>
+          <th class="col-qty">Qty</th>
+          <th class="col-total">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems; let i = index">
+          <td class="col-remove">
+            <input type="checkbox" [(ngModel)]="item.selected">
+          </td>
+          <td class="col-sku">{{i + 1}}</td>
+          <td class="col-image">
+            <img [src]="item.image" [alt]="item.name" class="product-image">
+          </td>
+          <td class="col-product">
+            <span class="product-name">{{item.name}}</span>
+          </td>
+          <td class="col-price">{{formatPrice(item.price)}}</td>
+          <td class="col-qty">
+            <input type="number" 
+                   [(ngModel)]="item.quantity" 
+                   min="1"
+                   (change)="updateQuantity(item.productId, item.quantity)"
+                   class="qty-input">
+          </td>
+          <td class="col-total">{{formatPrice(getSubtotal(item))}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-actions">
+      <button class="btn-remove" (click)="removeSelected()">
+        Remove selected
+      </button>
+      <button class="btn-update" (click)="updateCart()">
+        Update shopping cart
+      </button>
+      <button class="btn-continue" (click)="continueShopping()">
+        Continue shopping
+      </button>
+    </div>
+
+    <div class="cart-summary-footer">
+      <p><strong>Tổng số lượng:</strong> {{getTotalQuantity()}}</p>
+      <p><strong>Tổng tiền:</strong> <span class="total-price">{{formatPrice(total)}}</span></p>
+    </div>
+  </div>
+</div>

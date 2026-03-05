@@ -28,6 +28,8 @@ import { LoginComponent } from './login/login';
 import { RegisterComponent } from './register/register';
 import { AuthGuard } from './guards/auth.guard';
 import { MomoPaymentComponent } from './momo-payment/momo-payment';
+import { ProductListComponent } from './product-list/product-list';
+import { CartComponent } from './cart/cart';
 
 
 const routes: Routes = [
@@ -91,6 +93,10 @@ const routes: Routes = [
   //MoMo Payment
   {path:"momo-payment",component: MomoPaymentComponent,canActivate:[AuthGuard]},
   {path:"momo-payment/result",component: MomoPaymentComponent,canActivate:[AuthGuard]},
+
+  //Product List and Cart
+  {path:"product-list",component: ProductListComponent,canActivate:[AuthGuard]},
+  {path:"cart",component: CartComponent,canActivate:[AuthGuard]},
 
   
   {path:"**",component: Notfound}, //luôn để cuối cùng, mục đích để ngăn ai đó phá
