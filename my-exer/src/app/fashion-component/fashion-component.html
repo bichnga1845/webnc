@@ -6,6 +6,7 @@
         <td>Fashion Subject</td>
         <td>Fashion Detail</td>
         <td>Image</td>
+        <td>Action</td>
     </tr>
     <tbody>
         <tr *ngFor="let fashion of fashions">
@@ -14,6 +15,11 @@
             <td>{{fashion.fashion_detail}} </td>
             <td>
                 <img src="{{parse_image(fashion.fashion_image)}}" width="100px" height="100px">
+            </td>
+            <td>
+                <a routerLink="/fashion-detail/{{fashion._id}}">
+                    <button>Detail</button>
+                </a>
             </td>
         </tr>
     </tbody>

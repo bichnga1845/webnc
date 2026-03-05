@@ -1,0 +1,61 @@
+/* Tổng thể */
+p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* Link return */
+a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+a:hover {
+  color: #217dbb;
+  text-decoration: underline;
+}
+
+/* Lỗi */
+.error {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Table */
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 360px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+  text-align: center;
+}
+
+/* Label column */
+td:first-child {
+  font-weight: 600;
+  color: #555;
+  width: 140px;
+}
+
+/* Image */
+img {
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

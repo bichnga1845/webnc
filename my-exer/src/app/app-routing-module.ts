@@ -23,64 +23,74 @@ import { NewBookComponent } from './new-book-component/new-book-component';
 import { BookManagementEx50 } from './book-management-ex50/book-management-ex50';
 import { BookUpdate } from './book-update/book-update';
 import { FashionComponent } from './fashion-component/fashion-component';
+import { FashionDetailComponent } from './fashion-detail-component/fashion-detail-component';
+import { LoginComponent } from './login/login';
+import { RegisterComponent } from './register/register';
+import { AuthGuard } from './guards/auth.guard';
 import { MomoPaymentComponent } from './momo-payment/momo-payment';
 
 
 const routes: Routes = [
-  {path:"gioi-thieu",component:About},
-  {path:"listcustomer",component:Listcustomer},
-  {path:"listcustomer2",component:Listcustomer2},
-  {path:"listcustomer3",component:Listcustomer3},
-  {path:"listproduct",component:Listproduct},
-  {path:"productdetail/:id",component:Productdetail},
+  {path:"",redirectTo:"/login",pathMatch:"full"},
+  {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
+  {path:"gioi-thieu",component:About,canActivate:[AuthGuard]},
+  {path:"listcustomer",component:Listcustomer,canActivate:[AuthGuard]},
+  {path:"listcustomer2",component:Listcustomer2,canActivate:[AuthGuard]},
+  {path:"listcustomer3",component:Listcustomer3,canActivate:[AuthGuard]},
+  {path:"listproduct",component:Listproduct,canActivate:[AuthGuard]},
+  {path:"productdetail/:id",component:Productdetail,canActivate:[AuthGuard]},
 
   //ex13
-  {path:'service-product-image-event',component:Ex13},
-  {path:'service-product-image-event/:id',component:Ex13detail},
+  {path:'service-product-image-event',component:Ex13,canActivate:[AuthGuard]},
+  {path:'service-product-image-event/:id',component:Ex13detail,canActivate:[AuthGuard]},
 
   //ex18
-  {path:'ex18',component:Ex18},
+  {path:'ex18',component:Ex18,canActivate:[AuthGuard]},
   
   //ex26
-  {path:'ex26',component:FakeProduct},
+  {path:'ex26',component:FakeProduct,canActivate:[AuthGuard]},
 
   //ex27
-  {path:'ex27',component: FakeProductex27},
+  {path:'ex27',component: FakeProductex27,canActivate:[AuthGuard]},
 
   //ex28
-  {path:'ex28',component: Ex28},
+  {path:'ex28',component: Ex28,canActivate:[AuthGuard]},
 
   //ex21 - Login Form
-  {path:'ex21',component: Ex21},
+  {path:'ex21',component: Ex21,canActivate:[AuthGuard]},
 
   //ex22 - Course Registration
-  {path:'ex22',component: Ex22},
+  {path:'ex22',component: Ex22,canActivate:[AuthGuard]},
 
   //ex39 - Book API Service
-  {path:"ex39",component: Books},
+  {path:"ex39",component: Books,canActivate:[AuthGuard]},
 
   //ex41
-  {path:"ex41",component: BookDetailComponent},
-  {path:"ex41/:id",component: BookDetailComponent},
+  {path:"ex41",component: BookDetailComponent,canActivate:[AuthGuard]},
+  {path:"ex41/:id",component: BookDetailComponent,canActivate:[AuthGuard]},
 
   //ex48-49 - File Upload
-  {path:"upload",component: FileUploadComponent},
+  {path:"upload",component: FileUploadComponent,canActivate:[AuthGuard]},
 
   //ex43
-  {path:"ex43",component: NewBookComponent},
+  {path:"ex43",component: NewBookComponent,canActivate:[AuthGuard]},
 
   //ex50 - Book Management CRUD
-  {path:"ex50",component: BookManagementEx50},
+  {path:"ex50",component: BookManagementEx50,canActivate:[AuthGuard]},
 
   //ex45
-  {path:"ex45/:id",component: BookUpdate},
+  {path:"ex45/:id",component: BookUpdate,canActivate:[AuthGuard]},
 
   //ex53
-  {path:"ex53",component: FashionComponent},
+  {path:"ex53",component: FashionComponent,canActivate:[AuthGuard]},
+
+  //fashion-detail
+  {path:"fashion-detail/:id",component: FashionDetailComponent,canActivate:[AuthGuard]},
 
   //MoMo Payment
-  {path:"momo-payment",component: MomoPaymentComponent},
-  {path:"momo-payment/result",component: MomoPaymentComponent},
+  {path:"momo-payment",component: MomoPaymentComponent,canActivate:[AuthGuard]},
+  {path:"momo-payment/result",component: MomoPaymentComponent,canActivate:[AuthGuard]},
 
   
   {path:"**",component: Notfound}, //luôn để cuối cùng, mục đích để ngăn ai đó phá

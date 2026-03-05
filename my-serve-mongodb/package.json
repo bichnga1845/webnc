@@ -7,14 +7,17 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-      "start": "nodemon index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "body-parser": "^2.2.2",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "express-fileupload": "^1.5.2",
+    "express-session": "^1.19.0",
     "mongoclient": "^1.0.3",
     "mongodb": "^7.1.0",
     "mongoose": "^9.2.2"

@@ -30,6 +30,10 @@ import { NewBookComponent } from './new-book-component/new-book-component';
 import { BookManagementEx50 } from './book-management-ex50/book-management-ex50';
 import { BookUpdate } from './book-update/book-update';
 import { FashionComponent } from './fashion-component/fashion-component';
+import { FashionDetailComponent } from './fashion-detail-component/fashion-detail-component';
+import { LoginComponent } from './login/login';
+import { RegisterComponent } from './register/register';
+import { MomoPaymentComponent } from './momo-payment/momo-payment';
 
 @NgModule({
   declarations: [
@@ -56,6 +60,9 @@ import { FashionComponent } from './fashion-component/fashion-component';
     BookManagementEx50,
     BookUpdate,
     FashionComponent,
+    FashionDetailComponent,
+    LoginComponent,
+    RegisterComponent,
     
   ],
   imports: [
@@ -66,7 +73,8 @@ import { FashionComponent } from './fashion-component/fashion-component';
     AppRoutingModule,
     HttpClientModule, // cũng phải ó dòng này, tạo dự án là làm liền luôn
     Ex14catelog,
-    Ex18
+    Ex18,
+    MomoPaymentComponent
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
