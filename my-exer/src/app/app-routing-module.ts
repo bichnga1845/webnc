@@ -30,6 +30,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { MomoPaymentComponent } from './momo-payment/momo-payment';
 import { ProductListComponent } from './product-list/product-list';
 import { CartComponent } from './cart/cart';
+import { Ex58FashionAdmin } from './ex58-fashion-admin/ex58-fashion-admin';
+import { Ex58FashionForm } from './ex58-fashion-form/ex58-fashion-form';
 
 
 const routes: Routes = [
@@ -89,6 +91,11 @@ const routes: Routes = [
 
   //fashion-detail
   {path:"fashion-detail/:id",component: FashionDetailComponent,canActivate:[AuthGuard]},
+
+  //ex58 - Fashion Management Admin
+  {path:"ex58",component: Ex58FashionAdmin,canActivate:[AuthGuard]},
+  {path:"ex58-form",component: Ex58FashionForm,canActivate:[AuthGuard]},
+  {path:"ex58-form/:id",component: Ex58FashionForm,canActivate:[AuthGuard]},
 
   //MoMo Payment
   {path:"momo-payment",component: MomoPaymentComponent,canActivate:[AuthGuard]},

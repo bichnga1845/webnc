@@ -11,40 +11,57 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root',
 })
 export class FashionAPIService {
+  private apiUrl = 'http://localhost:4000/api';
+  
   constructor(private _http: HttpClient) { }
-  getFashions():Observable<any>
-  {
-  const headers=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")
-  const requestOptions:Object={
-  headers:headers,
-  responseType:"text"
-  }
-  return this._http.get<any>("http://localhost:3002/fashions",requestOptions).pipe(
-  map(res=>JSON.parse(res) as Array<Fashion>),
-  retry(3),
-  catchError(this.handleError))
+  
+  // Get all fashions
+  getFashions():Observable<any> {
+    return this._http.get<any>(`${this.apiUrl}/fashions`).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
-  getFashion(fashionId:string):Observable<any>
-  {
-  const headers=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")
-  const requestOptions:Object={
-  headers:headers,
-  responseType:"text"
+  // Get fashion by ID
+  getFashion(fashionId:string):Observable<any> {
+    return this._http.get<any>(`${this.apiUrl}/fashions/${fashionId}`).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
-  return this._http.get<any>("http://localhost:3002/fashions/"+fashionId,requestOptions).pipe(
-  map(res=>{
-    console.log('Raw response:', res);
-    const parsed = JSON.parse(res) as Fashion;
-    console.log('Parsed response:', parsed);
-    return parsed;
-  }),
-  retry(3),
-  catchError(this.handleError))
+
+  // Get fashions by style
+  getFashionsByStyle(style: string): Observable<any> {
+    return this._http.get<any>(`${this.apiUrl}/fashions/style/${style}`).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  // Create new fashion
+  createFashion(fashion: any): Observable<any> {
+    return this._http.post<any>(`${this.apiUrl}/fashions`, fashion).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Update fashion
+  updateFashion(id: string, fashion: any): Observable<any> {
+    return this._http.put<any>(`${this.apiUrl}/fashions/${id}`, fashion).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Delete fashion
+  deleteFashion(id: string): Observable<any> {
+    return this._http.delete<any>(`${this.apiUrl}/fashions/${id}`).pipe(
+      catchError(this.handleError)
+    );
   }
 
   handleError(error:HttpErrorResponse){
-  return throwError(()=>new Error(error.message))
+    return throwError(()=>new Error(error.message))
   }
 }
 

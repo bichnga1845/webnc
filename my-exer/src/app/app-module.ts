@@ -2,6 +2,7 @@ import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -36,6 +37,8 @@ import { RegisterComponent } from './register/register';
 import { MomoPaymentComponent } from './momo-payment/momo-payment';
 import { ProductListComponent } from './product-list/product-list';
 import { CartComponent } from './cart/cart';
+import { Ex58FashionAdmin } from './ex58-fashion-admin/ex58-fashion-admin';
+import { Ex58FashionForm } from './ex58-fashion-form/ex58-fashion-form';
 
 @NgModule({
   declarations: [
@@ -67,6 +70,8 @@ import { CartComponent } from './cart/cart';
     RegisterComponent,
     ProductListComponent,
     CartComponent,
+    Ex58FashionAdmin,
+    Ex58FashionForm,
     
   ],
   imports: [
@@ -76,6 +81,7 @@ import { CartComponent } from './cart/cart';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule, // cũng phải ó dòng này, tạo dự án là làm liền luôn
+    QuillModule.forRoot(),
     Ex14catelog,
     Ex18,
     MomoPaymentComponent

@@ -1,0 +1,109 @@
+<div class="fashion-form-container">
+  <div class="form-header">
+    <h1>{{ getPageTitle() }}</h1>
+    <button class="btn-back" (click)="backToList()">← Back to List</button>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errMessage" class="alert alert-error">
+    {{ errMessage }}
+  </div>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading" class="loading">
+    <p>Loading fashion data...</p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" class="fashion-form" [hidden]="isLoading">
+    <!-- Title Field -->
+    <div class="form-group">
+      <label for="title">Title <span class="required">*</span></label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="fashion.title"
+        [disabled]="isViewMode"
+        placeholder="Enter fashion title"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Thumbnail URL Field -->
+    <div class="form-group">
+      <label for="thumbnail">Thumbnail URL <span class="required">*</span></label>
+      <input
+        type="text"
+        id="thumbnail"
+        name="thumbnail"
+        [(ngModel)]="fashion.thumbnail"
+        [disabled]="isViewMode"
+        placeholder="https://example.com/image.jpg"
+        class="form-control"
+        required
+      />
+      <div *ngIf="fashion.thumbnail" class="thumbnail-preview">
+        <p>Preview:</p>
+        <img [src]="fashion.thumbnail" [alt]="fashion.title" 
+             (error)="$event.target.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZmlsbD0iIzk5OSI+SW52YWxpZCBJbWFnZSBVUkw8L3RleHQ+PC9zdmc+'" />
+      </div>
+    </div>
+
+    <!-- Style Dropdown -->
+    <div class="form-group">
+      <label for="style">Style <span class="required">*</span></label>
+      <select
+        id="style"
+        name="style"
+        [(ngModel)]="fashion.style"
+        [disabled]="isViewMode"
+        class="form-control"
+        required
+      >
+        <option value="">-- Select Style --</option>
+        <option *ngFor="let style of styles" [value]="style">{{ style }}</option>
+      </select>
+    </div>
+
+    <!-- Details Field with WYSIWYG Editor -->
+    <div class="form-group">
+      <label for="details">Details <span class="required">*</span></label>
+      <quill-editor
+        [(ngModel)]="fashion.details"
+        name="details"
+        [modules]="quillConfig"
+        [readOnly]="isViewMode"
+        placeholder="Enter fashion details..."
+        class="quill-editor-custom"
+      ></quill-editor>
+    </div>
+
+    <!-- Preview Section (for view mode) -->
+    <div *ngIf="isViewMode && fashion.details" class="details-preview">
+      <h3>Details Preview:</h3>
+      <div [innerHTML]="fashion.details" class="html-content"></div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="form-actions">
+      <button
+        *ngIf="!isViewMode"
+        type="submit"
+        class="btn btn-primary"
+      >
+        {{ isEditMode ? 'Update Fashion' : 'Create Fashion' }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="backToList()"
+      >
+        {{ isViewMode ? 'Close' : 'Cancel' }}
+      </button>
+    </div>
+  </form>
+</div>

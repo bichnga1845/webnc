@@ -1,0 +1,77 @@
+<div class="fashion-admin-container">
+  <div class="header">
+    <h1>Fashion Management System</h1>
+    <p class="subtitle">Admin Dashboard - Manage Fashion Collections</p>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errMessage" class="alert alert-error">
+    {{ errMessage }}
+  </div>
+
+  <!-- Filter and Add Button Section -->
+  <div class="action-bar">
+    <div class="filter-section">
+      <label for="styleFilter">Filter by Style:</label>
+      <select id="styleFilter" [(ngModel)]="selectedStyle" (change)="filterByStyle()">
+        <option value="all">All Styles</option>
+        <option *ngFor="let style of styles" [value]="style">{{ style }}</option>
+      </select>
+    </div>
+    <button class="btn-add" (click)="addNewFashion($event)">
+      ➕ Add New Fashion
+    </button>
+  </div>
+
+  <!-- Fashion List Table -->
+  <div class="table-container">
+    <table class="fashion-table">
+      <thead>
+        <tr>
+          <th>Thumbnail</th>
+          <th>Title</th>
+          <th>Style</th>
+          <th>Created Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fashion of filteredFashions">
+          <td>
+            <img [src]="fashion.thumbnail" [alt]="fashion.title" class="thumbnail" 
+                 (error)="$event.target.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIiBmaWxsPSIjOTk5Ij5ObyBJbWFnZTwvdGV4dD48L3N2Zz4='">
+          </td>
+          <td>
+            <strong>{{ fashion.title }}</strong>
+          </td>
+          <td>
+            <span class="style-badge" [class.street]="fashion.style === 'Street Style'" 
+                  [class.trend]="fashion.style === 'Trend'" 
+                  [class.runway]="fashion.style === 'Runway'">
+              {{ fashion.style }}
+            </span>
+          </td>
+          <td>{{ formatDate(fashion.createdAt) }}</td>
+          <td class="actions">
+            <button class="btn btn-view" (click)="viewDetail(fashion._id, $event)" title="View Details">
+              👁️ View
+            </button>
+            <button class="btn btn-edit" (click)="editFashion(fashion._id, $event)" title="Edit">
+              ✏️ Edit
+            </button>
+            <button class="btn btn-delete" (click)="deleteFashion(fashion._id, fashion.title, $event)" title="Delete">
+              🗑️ Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="filteredFashions.length === 0" class="no-data">
+      <p>No fashions found. Click "Add New Fashion" to create one.</p>
+    </div>
+  </div>
+</div>
